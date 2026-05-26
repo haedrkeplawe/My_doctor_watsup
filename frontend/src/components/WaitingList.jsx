@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:4000/api/queue";
+const API = "https://my-doctor-watsup.onrender.com/api/queue";
 
 export default function WaitingList({ patients, refresh }) {
   const cancelPatient = async (id, name) => {
