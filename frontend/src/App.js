@@ -72,7 +72,7 @@ function Dashboard() {
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
+         <Route path="/admin/Dkhaled" element={<Dashboard />} />
       <Route path="/queue/:number" element={<QueueStatus />} />
     </Routes>
   );
