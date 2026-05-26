@@ -1,7 +1,7 @@
 const Patient = require("../models/patient");
 const Counter = require("../models/counter");
 
-const CLINIC_URL = "https://clinic.example.com";
+const CLINIC_URL = "https://dkahled.netlify.app";
 
 const getTodayDate = () => new Date().toISOString().split("T")[0];
 
@@ -74,7 +74,7 @@ const handleIncomingMessage = async (sock, msg) => {
       pendingPatient.status = "waiting";
       await pendingPatient.save();
       await sock.sendMessage(rawPhone, {
-        text: `✅ تم تسجيلك يا ${name}!\nرقم دورك: *${queueNumber}*\n\nتابع دورك من هنا:\n${CLINIC_URL}/queue\n\nلإلغاء الحجز أرسل:\nالغاء ${queueNumber}`,
+        text: `✅ تم تسجيلك يا ${name}!\nرقم دورك: *${queueNumber}*\n\nتابع دورك من هنا:\n${CLINIC_URL}/#/queue/${queueNumber}\n\nلإلغاء الحجز أرسل:\nالغاء ${queueNumber}`,
       });
       return;
     }
@@ -87,7 +87,7 @@ const handleIncomingMessage = async (sock, msg) => {
     });
     if (existingActive) {
       await sock.sendMessage(rawPhone, {
-        text: `⏳ أنت مسجل بالفعل!\nرقم دورك: *${existingActive.queueNumber}*\n\nتابع دورك من هنا:\n${CLINIC_URL}/queue\n\nلإلغاء الحجز أرسل:\nالغاء ${existingActive.queueNumber}`,
+        text: `⏳ أنت مسجل بالفعل!\nرقم دورك: *${existingActive.queueNumber}*\n\nتابع دورك من هنا:\n${CLINIC_URL}/#/queue/${existingActive.queueNumber}\n\nلإلغاء الحجز أرسل:\nالغاء ${existingActive.queueNumber}`,
       });
       return;
     }
