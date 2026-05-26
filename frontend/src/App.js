@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 
 import CurrentPatient from "./components/CurrentPatient";
 import WaitingList from "./components/WaitingList";
 import DoneList from "./components/DoneList";
 import CancelledList from "./components/CancelledList";
+import QueueStatus from "./components/QueueStatus";
 
 const API = "https://my-doctor-watsup.onrender.com/api/queue";
 
-function App() {
+function Dashboard() {
   const [patients, setPatients] = useState([]);
   const [currentPatient, setCurrentPatient] = useState(null);
 
@@ -64,6 +66,15 @@ function App() {
         <CancelledList patients={cancelledPatients} />
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/queue/:number" element={<QueueStatus />} />
+    </Routes>
   );
 }
 
