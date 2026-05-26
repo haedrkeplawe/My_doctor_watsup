@@ -6,7 +6,7 @@ import WaitingList from "./components/WaitingList";
 import DoneList from "./components/DoneList";
 import CancelledList from "./components/CancelledList";
 
-const API = "http://localhost:4000/api/queue";
+const API = "https://my-doctor-watsup.onrender.com/api/queue";
 
 function App() {
   const [patients, setPatients] = useState([]);
